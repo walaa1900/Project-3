@@ -14,16 +14,93 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Healthcare Insurance Expenses </h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+        <h1 style="color: green;">Healthcare Insurance Expenses</h1>
+        <p style="color: purple;">Use the interactive charts below to explore the dataset</p>
       
       </div>
     </div>
   </div>
-<!-- JavaScript file  -->
-    <script type="text/javascript" src="static/HCI.js"></script>
- 
 
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+  <div id="chart"></div>
+
+
+
+
+  <head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div id="scatter-plot"></div>
+
+    <script>
+        // Load the insurance data
+        d3.csv("Resources/insurance.csv").then(function(data) {
+            // Convert numerical values from strings to numbers
+            data.forEach(function(d) {
+                d.age = +d.age;
+                d.bmi = +d.bmi;
+                d.charges = +d.charges;
+            });
+
+            // Set up the SVG canvas
+            const width = 600;
+            const height = 400;
+            const margin = { top: 20, right: 20, bottom: 60, left: 60 };
+            const svg = d3.select("#scatter-plot")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+            // Define scales for x and y axes
+            const xScale = d3.scaleLinear()
+                .domain([d3.min(data, d => d.age), d3.max(data, d => d.age)])
+                .range([margin.left, width - margin.right]);
+
+            const yScale = d3.scaleLinear()
+                .domain([d3.min(data, d => d.charges), d3.max(data, d => d.charges)])
+                .range([height - margin.bottom, margin.top]);
+
+            // Create circles for the scatter plot
+            svg.selectAll("circle")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("fill", "blue")
+                .attr("cx", d => xScale(d.age))
+                .attr("cy", d => yScale(d.charges))
+                .attr("r", 4);
+
+                
+
+            // Create x and y axes
+            svg.append("g")
+                .attr("class", "x-axis")
+                .attr("transform", "translate(0," + (height - margin.bottom) + ")")
+                .call(d3.axisBottom(xScale));
+
+            svg.append("g")
+                .attr("class", "y-axis")
+                .attr("transform", "translate(" + margin.left + ",0)")
+                .call(d3.axisLeft(yScale));
+
+            // Add axis labels
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("x", width / 2)
+                .attr("y", height - 10)
+                .text("Age");
+
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("transform", "rotate(-90)")
+                .attr("x", -height / 2)
+                .attr("y", 10)
+                .text("Charges");
+
+        });
+    </script>
+
+    
 </body>
-
 </html>
