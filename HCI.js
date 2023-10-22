@@ -31,6 +31,7 @@ d3.csv("Resources/insurance.csv").then(function(data) {
             .data(filteredData)
             .enter()
             .append("circle")
+            .text("Bar Chart Title")
             .attr("cx", function (d) { return x(d.age); } )
             .attr("cy", function (d) { return y(d.charges); } )
             .attr("r", 5)
@@ -81,4 +82,30 @@ d3.csv("Resources/insurance.csv").then(function(data) {
     allOption.text = "All";
     allOption.value = "all";
     smokerDropdown.add(allOption, 0);
+});
+
+
+d3.csv("insurance.csv").then(function(data) {
+    let trace = [{
+        domain: { x: [0, 1], y: [0, 1] },
+        value: data[0].Age,
+        title: { text: "<b>Insured Person's Age</b>", font: {size: 20}},
+        type: "indicator", 
+        mode: "gauge+number",
+        gauge: {
+          axis: {range: [null, 100]}, 
+          bar: {color: "#013220"},
+          steps: [
+            { range: [0, 20], color: "#013220" },
+            { range: [20, 40], color: "#023020" },
+            { range: [40, 60], color: "#43A047" },
+            { range: [60, 80], color: "#43AF50"},
+            { range: [80, 100], color: "#8BC34A" }
+          ],
+          width: 50,
+          height: 50
+        }
+    }];
+
+    Plotly.newPlot("gauge", trace);
 });
