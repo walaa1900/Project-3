@@ -36,4 +36,4 @@ Conclusion
 The Healthcare Insurance Expenses Prediction project aims to provide valuable insights into the factors influencing healthcare insurance expenses and to build a predictive model that can be used by both insurers and individuals. This project will contribute to more informed and fair healthcare insurance practices.
 
 
-#To open mongo db file run insurance_mongo_db-checkpoint
+# To open mongo db file run insurance_mongo_db-checkpoint
