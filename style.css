@@ -1,0 +1,51 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.small-chart {
+  width: 100px;
+  height: 100px;
+}
+
+#visualization1 {
+  width: 50%;
+}
+
+/* Add custom CSS styles here */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: green;
+}
+
+p {
+    color: purple;
+}
+
+.col-md-4 {
+    margin-bottom: 20px;
+}
+
+/* Add more styles for your specific elements */
