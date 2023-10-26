@@ -37,3 +37,6 @@ The Healthcare Insurance Expenses Prediction project aims to provide valuable in
 
 
 # To open mongo db file run insurance_mongo_db-checkpoint
+
+# Project 3 group 3 Powerpoint link:
+https://docs.google.com/presentation/d/1uz8jLCi03znUl7ex53cD6uy4XZ6TvewbNLgqmlePou4/edit?usp=sharing
